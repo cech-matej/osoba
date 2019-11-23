@@ -17,15 +17,22 @@ function Osoba(jmeno, prijmeni, vaha = 75, vyska = 180, narozeni){
         let d1 = new Date();
         let d2 = new Date(this.narozeni);
         let i = false;
-        if(d1.getDate() - d2.getDate() < 0)
-            i = true;
-        else if(d1.getMonth() - d2.getMonth() < 0)
-            i = true;
+        if(d2<d1){
+            if(d1.getDate() - d2.getDate() < 0)
+                i = true;
+            else if(d1.getMonth() - d2.getMonth() < 0)
+                i = true;
+            
+            if (i==true)
+                return (d1.getFullYear() - d2.getFullYear()) - 1;
+            else
+                return d1.getFullYear() - d2.getFullYear();
+        }
+        else{
+            return '-';
+        }
+
         
-        if (i==true)
-            return (d1.getFullYear() - d2.getFullYear()) - 1;
-        else
-            return d1.getFullYear() - d2.getFullYear();
     }
 
     this.vizitka = function(){
